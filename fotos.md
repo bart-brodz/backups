@@ -1,6 +1,8 @@
-# backing up 'FOTO' directory from `TOSHIBA 4TB` drive
+# backing up all photos 
 
-This guide describes ho to perform a backup of all photos from 'FOTO' directory of 'TOSHIBA 4TB' drive.
+This guide describes ho to perform a backup of all photos from:
+- 'FOTO' directory of 'TOSHIBA 4TB' drive
+- 'Photos' directory from Nextcloud
 
 THIS IS A MANUAL PROCESS!
 
@@ -35,9 +37,18 @@ Test the connection:
 ssh -i /home/bartb/.ssh/hetzner-storage-box/storage-box -p 23 u525993@u525993.your-storagebox.de 
 ```
 
-## Backing up data with rsync
+## Backing up 'FOTO' data with rsync
 
 Command:
 ```bash
-
+rsync --progress -e 'ssh -p23 -i /home/bartb/.ssh/hetzner-storage-box/storage-box' --recursive /media/bartb/TOSHIBA_4TB/FOTO u525993@u525993.your-storagebox.de:/hom
 ```
+Verification:
+
+## Backup whole nextcloud
+
+```bash
+sync --progress -e 'ssh -p23 -i /home/bartb/.ssh/hetzner-storage-box/storage-box' --recursive /home/bartb/Nextcloud u525993@u525993.your-storagebox.de:/home/
+```
+
+
